@@ -1,0 +1,48 @@
+body {
+    background: rgb(243, 244, 245);
+    height: 100%;
+    color: rgb(100, 108, 127);
+    line-height: 1.4rem;
+    font-family: Roboto, "Open Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+h1 { text-align: center; }
+
+.dropzone {
+    background: white;
+    border-radius: 5px;
+    border: 2px dashed rgb(0, 135, 247);
+    border-image: none;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dz-message {
+    font-size: 16px;
+    color: rgb(135, 146, 172);
+}
+
+element.style {
+}
+.dropzone .dz-preview .dz-image {
+    border: 2px dashed rgb(201 202 206);
+}
+.dz-remove{
+    text-decoration: none;
+    color: #646c7f;
+    font-weight: bold;
+}
+.text-remove{
+    padding: 0px 8px 0px 8px;
+    background: #d45252;
+    width: fit-content;
+    margin: 5px auto;
+    border-radius: 5px;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    color: #fff;
+    font-weight: bold;
+}
