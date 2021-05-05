@@ -46,3 +46,15 @@ element.style {
     color: #fff;
     font-weight: bold;
 }
+.copy-path {
+    padding: 0px 8px 0px 8px;
+    background: #52d45f;
+    width: fit-content;
+    margin: 5px auto;
+    border-radius: 5px;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
