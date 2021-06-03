@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TextController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +13,9 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/text', 'TextController@index')->name('text.index');
+Route::post('/text/submit', 'TextController@submit')->name('text.submit');
+Route::get('/text/{path}', 'TextController@show')->name('text.show ');
 
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::post('/upload_file', 'HomeController@upload')->name('home.upload');
