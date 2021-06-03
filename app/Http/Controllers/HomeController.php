@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response as FacadeResponse;
 
 class HomeController extends Controller
 {
@@ -47,6 +48,26 @@ class HomeController extends Controller
         $file = FileUpload::find($idFile);
         $isExists = File::exists($file->path);
         return view('download', compact('file', 'isExists'));
+    }
+    public function preview($path)
+    {
+        $idFile = trim(base64_decode($path), '.');
+        $file = FileUpload::find($idFile);
+        if( in_array($file->type, ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'JPEG']) ) {
+            return view('preview', compact('file'));
+        } elseif ( in_array($file->type, ['pdf', 'PDF']) ) {
+            $filename = $file->name;
+            $path = public_path($file->path);
+            return FacadeResponse::make(file_get_contents($path), 200, [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$filename.'"'
+            ]);
+        } elseif ( in_array($file->type, ['txt', 'TXT']) ) {
+            $txtFile = file_get_contents(public_path($file->path));
+            return view('preview', compact('file', 'txtFile'));
+        } elseif( in_array($file->type, ['flv', 'mp4', 'm3u8', 'ts', '3gp', 'mov', 'avi', 'wmv', 'webm']) ) {
+            return view('preview', compact('file'));
+        }
     }
     public function downloadFile(Request $request)
     {

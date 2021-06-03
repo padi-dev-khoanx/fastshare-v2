@@ -25,8 +25,6 @@ h1 { text-align: center; }
     color: rgb(135, 146, 172);
 }
 
-element.style {
-}
 .dropzone .dz-preview .dz-image {
     border: 2px dashed rgb(201 202 206);
 }
@@ -57,4 +55,32 @@ element.style {
     color: #fff;
     font-weight: bold;
     font-size: 14px;
+}
+.preview-file {
+    padding: 2px 8px 2px 8px;
+    background: #c4a932;
+    width: fit-content;
+    margin: 5px auto;
+    border-radius: 5px;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+}
+.not_exist_js {
+    text-align: center;
+}
+.preview_file {
+    text-align: center;
+    padding: 10px;
+    border: 2px dashed rgb(0, 135, 247);
+    border-radius: 5px;
+    background: #fff;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.zoomWindow {
+    cursor: zoom-in !important;
 }

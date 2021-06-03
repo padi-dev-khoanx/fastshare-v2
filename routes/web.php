@@ -16,5 +16,6 @@ use App\Http\Controllers\HomeController;
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::post('/upload_file', 'HomeController@upload')->name('home.upload');
 Route::get('/{path}', 'HomeController@download');
+Route::get('/preview/{path}', 'HomeController@preview')->name('previewFile');
 Route::post('/download', 'HomeController@downloadFile');
 Route::post('/delete_file', 'HomeController@delete')->name('home.delete');
