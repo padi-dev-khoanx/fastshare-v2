@@ -84,3 +84,38 @@ h1 { text-align: center; }
 .zoomWindow {
     cursor: zoom-in !important;
 }
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.container .text-item {
+    margin-bottom: 30px;
+}
+
+.container .text-item-lable{
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.container .text-item-content{
+    padding: 15px;
+    background: #fff;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.text-form input {
+    display: block;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.text-form label {
+    margin-bottom: 15px;
+}
+
+.error-msg {
+    color: #ff2222;
+}

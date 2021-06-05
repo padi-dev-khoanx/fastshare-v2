@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use http\Client\Response;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Text;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Validator;
 
 class TextController extends Controller
 {
@@ -18,13 +23,27 @@ class TextController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function submit(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:50',
+            'content' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(
+                [
+                    'status' => 'failed',
+                    'msg'=> $validator->errors()
+                ]
+            );
+        }
+
         $data = [];
         $data['title'] = $request->get('title');
-        $data['content'] = $request->get('summary-ckeditor');
+        $data['content'] = $request->get('content');
         $data['text_path'] = '';
         $dataCreated = Text::create($data);
         $textPath = trim(base64_encode(str_pad($dataCreated->id, 6, '.')), '=');
@@ -34,9 +53,19 @@ class TextController extends Controller
         $query['text_path'] = $textPath;
         $query->save();
 
-        return response()->json(['text_path'=> $request->root() . '/text/' . $textPath, 'id' => $dataCreated->id]);
+        return response()->json(
+            [
+                'status' => 'success',
+                'text_path' => $request->root() . '/text/' . $textPath,
+                'id' => $dataCreated->id
+            ]
+        );
     }
 
+    /**
+     * @param $path
+     * @return Application|Factory|View
+     */
     public function show($path)
     {
         $idFile = trim(base64_decode($path), '.');
