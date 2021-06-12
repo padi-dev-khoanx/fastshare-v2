@@ -1,16 +1,17 @@
 @extends('layout')
 @section('content')
     <section>
-        <h2 class="mt-5">Chia sẻ file</h2>
-        <br>
-        <div class="dropzone" id="my-dropzone" name="myDropzone">
-            <div class="dz-message needsclick">
-                Thả file vào đây để bắt đầu tải lên.<br>
-                <span class="note needsclick">(File tải lên không quá 100MB. Có thể tải
+        <div class="container">
+            <h2 class="mt-5">Chia sẻ file</h2>
+            <br>
+            <div class="dropzone" id="my-dropzone" name="myDropzone">
+                <div class="dz-message needsclick">
+                    Thả file vào đây để bắt đầu tải lên.<br>
+                    <span class="note needsclick">(File tải lên không quá 100MB. Có thể tải
         lên 6 files 1 lúc. File sẽ tự <strong>xoá</strong> sau khi được tải về.)</span>
+                </div>
             </div>
         </div>
-
     </section>
 
     <script type="text/javascript">

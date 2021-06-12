@@ -9,7 +9,9 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-h1 { text-align: center; }
+h1 {
+    text-align: center;
+}
 
 .dropzone {
     background: white;
@@ -20,6 +22,7 @@ h1 { text-align: center; }
     margin-left: auto;
     margin-right: auto;
 }
+
 .dz-message {
     font-size: 16px;
     color: rgb(135, 146, 172);
@@ -28,12 +31,14 @@ h1 { text-align: center; }
 .dropzone .dz-preview .dz-image {
     border: 2px dashed rgb(201 202 206);
 }
-.dz-remove{
+
+.dz-remove {
     text-decoration: none;
     color: #646c7f;
     font-weight: bold;
 }
-.text-remove{
+
+.text-remove {
     padding: 0px 8px 0px 8px;
     background: #d45252;
     width: fit-content;
@@ -44,6 +49,7 @@ h1 { text-align: center; }
     color: #fff;
     font-weight: bold;
 }
+
 .copy-path {
     padding: 0px 8px 0px 8px;
     background: #52d45f;
@@ -56,6 +62,7 @@ h1 { text-align: center; }
     font-weight: bold;
     font-size: 14px;
 }
+
 .preview-file {
     padding: 2px 8px 2px 8px;
     background: #c4a932;
@@ -68,9 +75,11 @@ h1 { text-align: center; }
     font-weight: bold;
     font-size: 13px;
 }
+
 .not_exist_js {
     text-align: center;
 }
+
 .preview_file {
     text-align: center;
     padding: 10px;
@@ -81,29 +90,31 @@ h1 { text-align: center; }
     margin-left: auto;
     margin-right: auto;
 }
+
 .zoomWindow {
     cursor: zoom-in !important;
 }
 
 .container {
-    max-width: 80%;
-    margin: 30px auto 0;
+    max-width: 1440px;
+    margin: 30px auto;
+    width: 80%;
 }
 
 .container .text-item {
     margin-bottom: 30px;
 }
 
-.container .text-item-lable{
-    margin-bottom: 15px;
+.container .text-item-lable {
     font-size: 30px;
+    margin-bottom: 15px;
 }
 
-.container .text-item-content{
-    padding: 15px;
+.container .text-item-content {
     background: #fff;
     border: solid 1px;
     border-radius: 5px;
+    padding: 15px;
 }
 
 .form {
@@ -140,5 +151,49 @@ h1 { text-align: center; }
 }
 
 .menu-left a, .menu-right a {
+    color: #646c7f;
+    margin: 0 -3px;
+    padding: 15px;
+}
+
+.menu-left :hover, .menu-right a:hover {
+    background: #a1c3ce;
+    text-decoration: none;
+}
+
+.menu .selected {
+    background: #a1c3ce;
+}
+
+.header-menu {
+    background: lightblue;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+
+.header-menu .container {
+    margin: 15px auto;
+}
+
+.account {
+    display: flex;
+    flex-direction: row;
+}
+
+.account .info {
+    background: lightblue;
+    flex: 1;
+    padding: 15px;
+}
+
+.account .info h4 {
+    margin-bottom: 20px;
+}
+
+.account .items-management {
+    background: #a1c3ce;
+    flex: 3;
     padding: 15px;
 }

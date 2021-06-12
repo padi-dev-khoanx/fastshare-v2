@@ -104,6 +104,7 @@ class UserController extends Controller
         $data = [];
         $data['name'] = $request->get('name');
         $data['email'] = $request->get('email');
+        $data['type_user'] = 0;
         $data['password'] = Hash::make($request->get('password'));
 
         User::create($data);
@@ -120,11 +121,16 @@ class UserController extends Controller
      */
     public function account()
     {
-        return view('user/account');
+        if (Auth::user()) {
+            return view('user/account');
+        } else {
+            return redirect(route('user.login'));
+        }
+
     }
 
     public function logout(){
-        $_SESSION['user'] = '';
-        return view('index');
+        Auth::logout();
+        return redirect(route('user.login'));
     }
 }

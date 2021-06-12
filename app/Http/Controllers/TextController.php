@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Text;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TextController extends Controller
@@ -44,6 +45,10 @@ class TextController extends Controller
         $data['title'] = $request->get('title');
         $data['content'] = $request->get('content');
         $data['text_path'] = '';
+        if (Auth::user()) {
+            $data['user_id'] = Auth::user()->id;
+        }
+
         $dataCreated = Text::create($data);
         $textPath = trim(base64_encode(str_pad($dataCreated->id, 6, '.')), '=');
 

@@ -24,7 +24,7 @@ Route::get('/account', 'UserController@account')->name('user.account');
 
 Route::get('/text', 'TextController@index')->name('text.index');
 Route::post('/text/submit', 'TextController@submit')->name('text.submit');
-Route::get('/text/{path}', 'TextController@show')->name('text.show ');
+Route::get('/text/{path}', 'TextController@show')->name('text.show');
 
 Route::post('/upload_file', 'HomeController@upload')->name('home.upload');
 Route::get('/{path}', 'HomeController@download');

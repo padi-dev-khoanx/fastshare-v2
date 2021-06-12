@@ -15,20 +15,37 @@
 <body>
 <h1 class="mt-5">Fastshare - Chia sẻ nhanh</h1>
 <br>
-<div class="container">
-    <div class="menu">
-        <div class="menu-left">
-            <a href="{{ route('home.index') }}">Chia sẻ file</a>
-            <a href="{{ route('text.index') }}">Chia sẻ text</a>
-        </div>
-        <div class="menu-right">
-            @if(session()->has('user'))
-                <span>Chào</span>
-                <a href="{{ route('user.logout') }}">Đăng xuất</a>
-            @else
-                <a href="{{ route('user.login') }}">Đăng nhập</a>
-                <a href="{{ route('user.register') }}">Đăng ký</a>
-            @endif
+<div class="header-menu">
+    <div class="container">
+        <div class="menu">
+            <div class="menu-left">
+                <a
+                    href="{{ route('home.index') }}"
+                    @if(Route::current()->getName() == 'home.index')
+                        class="selected"
+                    @endif
+                >Chia sẻ file</a>
+                <a
+                    href="{{ route('text.index') }}"
+                    @if(Route::current()->getName() == 'text.index')
+                        class="selected"
+                    @endif
+                >Chia sẻ text</a>
+            </div>
+            <div class="menu-right">
+                @if(auth()->user())
+                    <a
+                        href="{{ route('user.account') }}"
+                        @if(Route::current()->getName() == 'user.account')
+                            class="selected"
+                        @endif
+                    >Chào {{auth()->user()->name}}</a>
+                    <a href="{{ route('user.logout') }}">Đăng xuất</a>
+                @else
+                    <a href="{{ route('user.login') }}">Đăng nhập</a>
+                    <a href="{{ route('user.register') }}">Đăng ký</a>
+                @endif
+            </div>
         </div>
     </div>
 </div>

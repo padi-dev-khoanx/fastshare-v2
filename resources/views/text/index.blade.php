@@ -1,8 +1,8 @@
 @extends('layout')
 @section('content')
-    <h2 class="mt-5">Chia sẻ text</h2>
-    <br>
     <div class="container">
+        <h2 class="mt-5">Chia sẻ text</h2>
+        <br>
         <p id="msg" class="error-msg"></p>
         <form class="form" id="textForm" action=" {{ route('text.submit') }}" method="POST">
             @csrf

@@ -14,7 +14,7 @@ class AddVipToUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('type_user')->nullable();
+            $table->integer('type_user')->nullable()->default(0);
             $table->timestamp('vip_end_date')->nullable();
         });
     }
