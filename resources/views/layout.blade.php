@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fast Share - Chia sẻ nhanh của Khoa</title>
+    <title>Fast Share - Chia sẻ nhanh</title>
     <link rel="stylesheet" href="{{asset('/css/dropzone.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -13,8 +13,26 @@
     <script type="text/javascript" src="{{asset('/js/dropzone.js')}}"></script>
 </head>
 <body>
-    <h1 class="mt-5">Fastshare - Chia sẻ file nhanh</h1>
-    <br>
-    @yield('content')
+<h1 class="mt-5">Fastshare - Chia sẻ nhanh</h1>
+<br>
+<div class="container">
+    <div class="menu">
+        <div class="menu-left">
+            <a href="{{ route('home.index') }}">Chia sẻ file</a>
+            <a href="{{ route('text.index') }}">Chia sẻ text</a>
+        </div>
+        <div class="menu-right">
+            @if(session()->has('user'))
+                <span>Chào</span>
+                <a href="{{ route('user.logout') }}">Đăng xuất</a>
+            @else
+                <a href="{{ route('user.login') }}">Đăng nhập</a>
+                <a href="{{ route('user.register') }}">Đăng ký</a>
+            @endif
+        </div>
+    </div>
+</div>
+@yield('menu')
+@yield('content')
 </body>
 </html>

@@ -1,5 +1,7 @@
 @extends('layout')
 @section('content')
+    <h2 class="mt-5">Chia sẻ text</h2>
+    <br>
     <div class="container">
         <div class="text-item">
             <p class="text-item-lable">Title</p>

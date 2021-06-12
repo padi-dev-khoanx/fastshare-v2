@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use http\Client\Response;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;

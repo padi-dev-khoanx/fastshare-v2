@@ -87,7 +87,7 @@ h1 { text-align: center; }
 
 .container {
     max-width: 80%;
-    margin: 0 auto;
+    margin: 30px auto 0;
 }
 
 .container .text-item {
@@ -106,16 +106,39 @@ h1 { text-align: center; }
     border-radius: 5px;
 }
 
-.text-form input {
+.form {
+    padding: 15px 0;
+}
+
+.form input {
     display: block;
     margin-bottom: 30px;
     width: 100%;
 }
 
-.text-form label {
+.form label {
     margin-bottom: 15px;
+}
+
+.small-container {
+    max-width: 600px;
+    margin: 30px auto 0;
+}
+
+.small-container h2 {
+    text-align: center;
 }
 
 .error-msg {
     color: #ff2222;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu-left a, .menu-right a {
+    padding: 15px;
 }
