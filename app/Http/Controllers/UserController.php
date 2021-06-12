@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -45,8 +46,7 @@ class UserController extends Controller
 
         $email = $request->get('email');
         $password = $request->get('password');
-        if ($email == 'admin' && $password == 'admin') {
-            $_SESSION['user'] = 'admin';
+        if ( Auth::attempt(['email' => $email, 'password' =>$password])) {
             return response()->json(
                 [
                     'status' => 'success'
@@ -78,7 +78,7 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique',
+            'email' => 'required|unique:users',
             'password' => 'required',
             'repassword' => 'required',
         ]);
