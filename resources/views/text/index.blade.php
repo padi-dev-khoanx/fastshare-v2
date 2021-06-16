@@ -1,18 +1,20 @@
 @extends('layout')
 @section('content')
     <div class="container">
-        <h2 class="mt-5">Chia sẻ text</h2>
-        <br>
-        <p id="msg" class="error-msg"></p>
-        <form class="form" id="textForm" action=" {{ route('text.submit') }}" method="POST">
-            @csrf
-            <label for="title">Title</label>
-            <input id="title" type="text" name="title"/>
-            <label for="summary-ckeditor">Content</label>
-            <textarea class="form-control" id="summary-ckeditor" name="summary-ckeditor"></textarea>
-            <br/>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        <div class="card">
+            <div class="card-body">
+                <p id="msg" class="error-msg"></p>
+                <form class="form" id="textForm" action=" {{ route('text.submit') }}" method="POST">
+                    @csrf
+                    <label for="title">Title</label>
+                    <input id="title" type="text" name="title"/>
+                    <label for="summary-ckeditor">Content</label>
+                    <textarea class="form-control" id="summary-ckeditor" name="summary-ckeditor"></textarea>
+                    <br/>
+                    <button type="submit" class="btn btn-primary" style="background: #0087f7">Chia sẻ</button>
+                </form>
+            </div>
+        </div>
     </div>
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>

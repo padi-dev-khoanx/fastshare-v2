@@ -13,8 +13,6 @@
     <script type="text/javascript" src="{{asset('/js/dropzone.js')}}"></script>
 </head>
 <body>
-<h1 class="mt-5">Fastshare - Chia sẻ nhanh</h1>
-<br>
 <div class="header-menu">
     <div class="container">
         <div class="menu">
@@ -32,6 +30,7 @@
                     @endif
                 >Chia sẻ text</a>
             </div>
+            <p class="title-header">Fastshare - Chia sẻ nhanh</p>
             <div class="menu-right">
                 @if(auth()->user())
                     <a

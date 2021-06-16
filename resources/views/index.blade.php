@@ -2,8 +2,6 @@
 @section('content')
     <section>
         <div class="container">
-            <h2 class="mt-5">Chia sẻ file</h2>
-            <br>
             <div class="dropzone" id="my-dropzone" name="myDropzone">
                 <div class="dz-message needsclick">
                     Thả file vào đây để bắt đầu tải lên.<br>

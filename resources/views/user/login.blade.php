@@ -1,17 +1,21 @@
 @extends('layout')
 @section('content')
     <div class="container small-container">
-        <h2>Đăng nhập</h2>
-        <p id="msg" class="error-msg"></p>
-        <form class="form" id="loginForm" action=" {{ route('user.auth') }}" method="POST">
-            @csrf
-            <label for="email">Email</label>
-            <input id="email" type="text" name="email"/>
-            <label for="password">Mật khẩu</label>
-            <input id="password" type="password" name="password"/>
-            <button type="submit" class="btn btn-primary">Đăng nhập</button>
-        </form>
-        <a href="{{ route('user.register') }}">Bạn chưa có tài khoản?</a>
+        <div class="card">
+            <div class="card-body">
+                <h2>Đăng nhập</h2>
+                <p id="msg" class="error-msg"></p>
+                <form class="form" id="loginForm" action=" {{ route('user.auth') }}" method="POST">
+                    @csrf
+                    <label for="email">Email</label>
+                    <input id="email" type="text" name="email"/>
+                    <label for="password">Mật khẩu</label>
+                    <input id="password" type="password" name="password"/>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+                <a href="{{ route('user.register') }}">Bạn chưa có tài khoản?</a>
+            </div>
+        </div>
     </div>
     <script>
         $("#loginForm").submit(function (event) {

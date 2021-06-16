@@ -148,25 +148,27 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-top: 10px;
 }
 
 .menu-left a, .menu-right a {
     color: #646c7f;
     margin: 0 -3px;
     padding: 15px;
+    font-weight: bold;
 }
 
 .menu-left :hover, .menu-right a:hover {
-    background: #a1c3ce;
+    color: #0087f7;
     text-decoration: none;
 }
 
 .menu .selected {
-    background: #a1c3ce;
+    color: #0087f7;
 }
 
 .header-menu {
-    background: lightblue;
+    background: #fff;
     left: 0;
     position: fixed;
     top: 0;
@@ -196,4 +198,28 @@ h1 {
     background: #a1c3ce;
     flex: 3;
     padding: 15px;
+}
+
+.card {
+    background: white;
+    border-radius: 5px;
+    border: 2px dashed rgb(0, 135, 247);
+    border-image: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    margin-top: 150px;
+}
+
+.title-header {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+input {
+    height: 40px;
+    border: #0087f7 1px solid;
+    border-radius: 6px;
 }
