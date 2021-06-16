@@ -9,6 +9,9 @@
                         <p>{{$errors->first()}}</p>
                     </div>
                 @endif
+                <div class="about-vip">
+                    Với 5$ bạn sẽ có 1 tháng là thành viên VIP với đặc quyền tải lên tối đa 200MB/tập tin thay vì chỉ là 100MB, có thể cài đặt lên tới 4 lần tải về cho 1 tập tin và thời gian tồn tại của tập tin là 7 ngày.
+                </div>
                 <form action="{{route('user.getVIP')}}" method="post" id="payment-form">
                     @csrf
                     <div class="form-group">

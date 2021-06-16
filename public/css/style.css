@@ -258,3 +258,9 @@ input {
     background: rgb(0, 135, 247);
     padding: 2px 5px;
 }
+.about-vip {
+    background-color: #d1d1d1;
+    padding: 10px;
+    margin: 20px 0px;
+    font-size: 14px;
+}
