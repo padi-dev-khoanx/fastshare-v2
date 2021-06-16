@@ -1,11 +1,14 @@
 @extends('layout')
 @section('content')
+@php
+    $typeUser = auth()->user()->type_user ?? 0;
+@endphp
     <section>
         <div class="container">
             <div class="dropzone" id="my-dropzone" name="myDropzone">
                 <div class="dz-message needsclick">
                     Thả file vào đây để bắt đầu tải lên.<br>
-                    @if(auth()->user()->type_user == 1)
+                    @if($typeUser == 1)
                     <span class="note needsclick">(File tải lên không quá 200MB. Có thể tải
         lên 6 files 1 lúc. File sẽ tự <strong>xoá</strong> sau khi hết số lượt tải về hoặc quá 7 ngày.)</span>
                     @else
@@ -21,7 +24,7 @@
         var listId = [];
         var listPath = [];
         var maxFileSize = 100;
-        @if(auth()->user()->type_user == 1)
+        @if($typeUser == 1)
             maxFileSize = 200;
         @endif
 
@@ -79,7 +82,7 @@
                         $(this).data("path", listPath[index]);
                     })
 
-                    @if(auth()->user()->type_user == 1)
+                    @if($typeUser == 1)
                     $(".times-download").each(function (index, value) {
                         $(this).html("<select class=\"form-select times_download\" name=\"times_download\" id=\'times_download_" + listId[index] + "\' onchange=\'idFile = " + listId[index] + " ;timesDownLoadFunction()\'>\n" +
                             "  <option selected value=\"1\">1 lần tải</option>\n" +
