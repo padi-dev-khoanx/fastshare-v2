@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response as FacadeResponse;
 
 class HomeController extends Controller
@@ -30,6 +31,9 @@ class HomeController extends Controller
             $data['type'] = $fileObject->getClientOriginalExtension();
             $data['size'] = $fileObject->getSize();
             $data['path'] = $fileObject->move('upload', $data['name'].$now);
+            if (Auth::user()) {
+                $data['user_id'] = Auth::user()->id;
+            }
             $data['path_download'] = '';
             $dataCreated = FileUpload::create($data);
 

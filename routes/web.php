@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TextController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +13,25 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group([
+    'middleware' => ['web', 'auth'],
+], function () {
+    Route::get('/text', 'TextController@index')->name('text.index');
+    Route::post('/text/submit', 'TextController@submit')->name('text.submit');
+    Route::get('/logout', 'UserController@logout')->name('user.logout');
+    Route::get('/account', 'UserController@account')->name('user.account');
+    Route::get('/account/buyVIP', 'UserController@buyVIP')->name('user.buyVIP');
+    Route::post('/account/getVIP', 'UserController@getVIP')->name('user.getVIP');
+});
+Route::get('/text/{path}', 'TextController@show')->name('text.show');
 
 Route::get('/', 'HomeController@index')->name('home.index');
+
+Route::get('/login', 'UserController@login')->name('user.login');
+Route::get('/register', 'UserController@register')->name('user.register');
+Route::post('/auth', 'UserController@auth')->name('user.auth');
+Route::post('/create', 'UserController@create')->name('user.create');
+
 Route::post('/upload_file', 'HomeController@upload')->name('home.upload');
 Route::get('/{path}', 'HomeController@download');
 Route::get('/preview/{path}', 'HomeController@preview')->name('previewFile');
