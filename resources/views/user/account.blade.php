@@ -3,14 +3,20 @@
 <div class="container">
     <h2>Tài khoản</h2>
     <br/>
-{{--    user đang login: {{auth()->user()->name}}--}}
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <p>{!! \Session::get('success') !!}</p>
+        </div>
+    @endif
     <div class="account">
         <div class="info">
             <h4>Thông tin user</h4>
             <div>
                 <p>Tên: {{auth()->user()->name}}</p>
                 <p>Email: {{auth()->user()->email}}</p>
-                <button type="button" class="btn btn-primary" style="background: #0087f7">ĐĂNG KÝ VIP</button>
+                @if(auth()->user()->type_user == 0)
+                    <a class="btn btn-primary" style="background: #0087f7" href="{{route('user.buyVIP')}}">ĐĂNG KÝ VIP</a>
+                @endif
             </div>
         </div>
         <div class="items-management">

@@ -19,6 +19,10 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    const TYPE_NORMAL_USER = 0;
+    const TYPE_VIP_USER = 1;
+    const TYPE_ADMIN_USER = 2;
+
     /**
      * The attributes that should be hidden for arrays.
      *
