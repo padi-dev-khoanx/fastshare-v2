@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Orders;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
@@ -154,10 +154,13 @@ class UserController extends Controller
             if($charge->paid) {
                 $user = User::find(Auth::user()->id);
                 $user->type_user = User::TYPE_VIP_USER;
+                $user->vip_end_date = date('Y-m-d', strtotime('+1 months'));
                 $user->save();
                 $order['user_id'] = Auth::user()->id;
                 $order['price'] = 5;
-                Order::create($data);
+                $order['create_date'] = now();
+                $order['end_date'] = date('Y-m-d', strtotime('+1 months'));
+                Orders::create($order);
                 return redirect(route('user.account'))->with('success', 'Mua gói VIP thành công');
             } else {
                 return redirect()->back()->withErrors(['Lỗi hệ thống']);

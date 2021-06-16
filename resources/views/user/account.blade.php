@@ -16,6 +16,9 @@
                 <p>Email: {{auth()->user()->email}}</p>
                 @if(auth()->user()->type_user == 0)
                     <a class="btn btn-primary" style="background: #0087f7" href="{{route('user.buyVIP')}}">ĐĂNG KÝ VIP</a>
+                @elseif(auth()->user()->type_user == 1)
+                    <img src="{{asset('/img/star.png')}}" alt="" height="50px" style="margin-bottom: 10px">
+                    <p>Hết hạn: {{date("d/m/Y", strtotime(auth()->user()->vip_end_date))}}</p>
                 @endif
             </div>
         </div>
