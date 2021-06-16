@@ -56,26 +56,19 @@
                     }
                     listId.push(response.id);
                     listPath.push(response.path_download);
+
                     $(".text-remove").each(function (index, value) {
                         $(this).attr('id', listId[index]);
                     })
-                    $(".dz-details").each(function () {
-                        let html_dz_details = $(this).html()
-                        //check xem đã có dz-link chưa thì mới chèn thêm
-                        if (html_dz_details.search("dz-link") === -1) {
-                            $(this).html(html_dz_details + "<div class=\"dz-link\"><span id='dz-link'>" + response.path_download + "</span></div>")
-                        }
+
+                    $(".dz-link").each(function (index, value) {
+                        $(this).html("<span>" + listPath[index] + "</span>");
                     })
-                    $(".dz-preview").each(function () {
-                        let html_dz_preview = $(this).html()
-                        //check xem đã có dz-link chưa thì mới chèn thêm
-                        if (html_dz_preview.search("copy-path") === -1) {
-                            $(this).html(html_dz_preview + "<div class=\"copy-path\" data-path=\"" + response.path_download + "\"> Copy url </div>")
-                        }
+
+                    $(".copy-path").each(function (index, value) {
+                        $(this).data("path", listPath[index]);
                     })
-                    // console.log(response.id)
-                    // console.log(response.path_download)
-                    // console.log(listPath)
+
                 });
                 this.on("canceledmultiple", function (files, response) {
                     window.onbeforeunload = function () {
