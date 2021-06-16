@@ -25,31 +25,64 @@
         <div class="items-management">
             <h4>Quản lý tập tin tải lên</h4>
             <br>
-            <table class="table">
+            <table class="table table-striped" id="table_id">
                 <thead>
                   <tr>
                     <th scope="col">Tên</th>
                     <th scope="col">Đường dẫn</th>
                     <th scope="col">Thời gian tải lên</th>
-                    <th scope="col">Lượt tải còn lại</th>
+                    <th scope="col">Lượt tải</th>
                   </tr>
                 </thead>
                 <tbody>
+                @foreach($userFile as $file)
                     <tr>
-                        <td>chitietgoi (1).png</td>
-                        <td><a href="http://127.0.0.1:8000/MTIuLi4u">http://127.0.0.1:8000/MTIuLi4u</a></td>
-                        <td>2021-06-04 02:46:42</td>
-                        <td>5</td>
+                        <td><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{$file->name}}</p></td>
+                        <td><a href="{{request()->root() . '/' . $file->path_download}}"><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/' . $file->path_download}}</p></a></td>
+                        <td style="width: fit-content">{{$file->created_at}}</td>
+                        <td style="width: fit-content">{{$file->times_download}}</td>
                     </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="account">
+        <div class="none"></div>
+        <div class="items-management">
+            <h4>Quản lý văn bản chia sẻ</h4>
+            <br>
+            <table class="table table-striped" id="table_id_2">
+                <thead>
+                <tr>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Đường dẫn</th>
+                    <th scope="col">Thời gian tải lên</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($userText as $text)
                     <tr>
-                        <td>chitietgoi.png</td>
-                        <td><a href="http://127.0.0.1:8000/MTIuLi3a">http://127.0.0.1:8000/MTIuLi3a</a></td>
-                        <td>2021-06-04 02:43:23</td>
-                        <td>2</td>
+                        <td><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{$text->title}}</p></td>
+                        <td><a href="{{request()->root() . '/' . $text->path_download}}"><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/' . $text->path_download}}</p></a></td>
+                        <td style="width: fit-content">{{$text->created_at}}</td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready( function () {
+        $('#table_id').DataTable({
+            "order": [[ 2, "desc" ]],
+            "searching": false
+        });
+        $('#table_id_2').DataTable({
+            "order": [[ 2, "desc" ]],
+            "searching": false
+        });
+    } );
+</script>
 @endsection

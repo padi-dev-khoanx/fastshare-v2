@@ -182,12 +182,22 @@ h1 {
 .account {
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
 }
 
 .account .info {
     background: lightblue;
     flex: 1;
     padding: 15px;
+    height: fit-content;
+    margin-right: 15px;
+}
+
+.account .none {
+    flex: 1;
+    padding: 15px;
+    height: fit-content;
+    margin-right: 15px;
 }
 
 .account .info h4 {
@@ -195,9 +205,11 @@ h1 {
 }
 
 .account .items-management {
-    background: #a1c3ce;
+    background: #fff;
     flex: 3;
     padding: 15px;
+    border-radius: 5px;
+    border: 2px dashed rgb(0, 135, 247);
 }
 
 .card {
@@ -222,4 +234,27 @@ input {
     height: 40px;
     border: #0087f7 1px solid;
     border-radius: 6px;
+}
+.times-download {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+.times-download select{
+    text-align: center;
+    border: 2px solid rgb(0, 135, 247);
+    border-radius: 4px;
+    color: #fff;
+    background: rgb(0, 135, 247);
+}
+.times-download-count {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid rgb(0, 135, 247);
+    border-radius: 4px;
+    color: #fff;
+    background: rgb(0, 135, 247);
+    padding: 2px 5px;
 }

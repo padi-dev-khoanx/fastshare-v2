@@ -77,13 +77,28 @@ class HomeController extends Controller
     {
         $pathToFile = 'upload/' . substr($request->filePath,7);
         $name = $request->fileName;
-        return response()->download($pathToFile, $name)->deleteFileAfterSend(true);
+        $file = FileUpload::find($request->fileId);
+        $file['times_download'] = $file['times_download'] - 1;
+        $file->save();
+        if($file['times_download'] == 0) {
+            return response()->download($pathToFile, $name)->deleteFileAfterSend(true);
+        } else {
+            return response()->download($pathToFile, $name);
+        }
     }
     public function delete(Request $request)
     {
         $file = FileUpload::find($request['id']);
         File::delete($file->path);
         $file->delete();
+    }
+
+    public function updateTimesDownload(Request $request)
+    {
+        $file = FileUpload::find($request->id);
+        $file['times_download'] = $request->times_download;
+        $file->save();
+        return response()->json(['success'=> true]);
     }
     /**
      * Show the form for creating a new resource.

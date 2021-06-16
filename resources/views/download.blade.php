@@ -10,6 +10,7 @@
                         <div class="content text-center">
                             <input name="filePath" value="{{$file->path}}" hidden>
                             <input name="fileName" value="{{$file->name}}" hidden>
+                            <input name="fileId" value="{{$file->id}}" hidden>
                             @if ($isExists)
                                 <div class="dz-preview dz-file-preview dz-processing dz-success dz-complete text-center" id="exists">
                                     <div class="dz-image">
@@ -47,6 +48,8 @@
                                         @if ( in_array($file->type, ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'JPEG', 'txt', 'TXT', 'flv', 'mp4', 'm3u8', 'ts', '3gp', 'mov', 'avi', 'wmv', 'webm', 'pdf', 'PDF']) )
                                             <a class="preview-file" href="{{route('previewFile', $file->path_download)}}" target="_blank"><i class="fas fa-eye"></i></a>
                                         @endif
+                                        <br>
+                                        <label class="times-download-count"> Còn {{$file->times_download}} lần tải</label>
                                     </div>
                                 </div>
                             @else
@@ -62,9 +65,14 @@
     </div>
 </div>
 <script>
+    var times_download = {{$file->times_download}}
     $("#submit").click(function (){
+        times_download = times_download - 1;
+        $(".times-download-count").text("Còn " + times_download + " lần tải")
+        if(times_download == 0) {
             $('#exists').fadeOut();
             $('.not_exist_js').fadeIn(1500);
+        }
     });
 </script>
 @endsection

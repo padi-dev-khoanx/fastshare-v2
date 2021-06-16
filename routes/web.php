@@ -22,6 +22,7 @@ Route::group([
     Route::get('/account', 'UserController@account')->name('user.account');
     Route::get('/account/buyVIP', 'UserController@buyVIP')->name('user.buyVIP');
     Route::post('/account/getVIP', 'UserController@getVIP')->name('user.getVIP');
+    Route::post('/update_times_download', 'HomeController@updateTimesDownload')->name('home.update_times_download');
 });
 Route::get('/text/{path}', 'TextController@show')->name('text.show');
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FileUpload;
 use App\Models\Orders;
+use App\Models\Text;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
@@ -125,7 +127,9 @@ class UserController extends Controller
     public function account()
     {
         if (Auth::user()) {
-            return view('user/account');
+            $userFile = FileUpload::where('user_id', Auth::user()->id)->get();
+            $userText = Text::where('user_id', Auth::user()->id)->get();
+            return view('user/account', compact('userFile', 'userText'));
         } else {
             return redirect(route('user.login'));
         }
