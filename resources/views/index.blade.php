@@ -64,10 +64,12 @@
                     window.onbeforeunload = function () {
                         return "";
                     };
+                    $(".copy-path").hide()
                 });
                 this.on("successmultiple", function (files, response) {
                     window.onbeforeunload = function () {
                     }
+                    $(".copy-path").show()
                     listId.push(response.id);
                     listPath.push(response.path_download);
 
