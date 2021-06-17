@@ -23,6 +23,7 @@
     <script type="text/javascript">
         var listId = [];
         var listPath = [];
+        var listIndexError = [];
         var maxFileSize = 100;
         @if($typeUser == 1)
             maxFileSize = 200;
@@ -72,7 +73,6 @@
                         }
                     })
                     $(".dz-link").each(function () {
-                        console.log($(this).html())
                         if($(this).html() === "<span></span>" || $(this).html() === "<span>undefined</span>") {
                             $(this).hide()
                         } else {
@@ -117,6 +117,26 @@
                     window.onbeforeunload = function () {
                     }
                 });
+                this.on("error", function (){
+                    //Check nếu file tải lên thất bại thì sẽ bỏ đi nút copy
+                    $(".dz-error-message span").each(function (index, value) {
+                        if ($(this).html() != "") {
+                            listIndexError.push(index)
+                        }
+                    })
+
+                    $(".dz-link").each(function (index, value) {
+                        if (listIndexError.includes(index)) {
+                            $(this).remove()
+                        }
+                    })
+
+                    $(".copy-path").each(function (index, value) {
+                        if (listIndexError.includes(index)) {
+                            $(this).remove()
+                        }
+                    })
+                })
             },
         }
 
