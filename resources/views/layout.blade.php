@@ -40,7 +40,9 @@
                         @if(Route::current()->getName() == 'user.account')
                             class="selected"
                         @endif
-                    >Chào {{auth()->user()->name}}</a>
+                    >Chào {{auth()->user()->name}} @if(auth()->user()->type_user == 1)
+                        <img src="{{asset('/img/star.png')}}" alt="" height="25px" style="margin-bottom: 5px">
+                        @endif</a>
                     <a href="{{ route('user.logout') }}">Đăng xuất</a>
                 @else
                     <a href="{{ route('user.login') }}">Đăng nhập</a>
@@ -49,6 +51,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class="footer">
+    <p class="text-footer">Nguyen Trong Nghia - 0911551998</p>
 </div>
 @yield('menu')
 @yield('content')

@@ -79,6 +79,18 @@
                             $(this).show()
                         }
                     })
+                    $(".times-download").each(function () {
+                        if($(this).html() === "" || $(this).html() === "<select class=\"form-select times_download\" name=\"times_download\" id=\"times_download_undefined\" onchange=\"idFile = undefined ;timesDownLoadFunction()\">\n" +
+                            "  <option selected=\"\" value=\"1\">1 lần tải</option>\n" +
+                            "  <option value=\"2\">2 lần tải</option>\n" +
+                            "  <option value=\"3\">3 lần tải</option>\n" +
+                            "  <option value=\"4\">4 lần tải</option>\n" +
+                            "</select>") {
+                            $(this).hide()
+                        } else {
+                            $(this).show()
+                        }
+                    })
                 });
                 this.on("successmultiple", function (files, response) {
                     window.onbeforeunload = function () {
@@ -104,6 +116,7 @@
 
                     @if($typeUser == 1)
                     $(".times-download").each(function (index, value) {
+                        $(this).show()
                         $(this).html("<select class=\"form-select times_download\" name=\"times_download\" id=\'times_download_" + listId[index] + "\' onchange=\'idFile = " + listId[index] + " ;timesDownLoadFunction()\'>\n" +
                             "  <option selected value=\"1\">1 lần tải</option>\n" +
                             "  <option value=\"2\">2 lần tải</option>\n" +
@@ -132,6 +145,12 @@
                     })
 
                     $(".copy-path").each(function (index, value) {
+                        if (listIndexError.includes(index)) {
+                            $(this).remove()
+                        }
+                    })
+
+                    $(".times-download").each(function (index, value) {
                         if (listIndexError.includes(index)) {
                             $(this).remove()
                         }

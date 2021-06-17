@@ -264,3 +264,14 @@ input {
     margin: 20px 0px;
     font-size: 14px;
 }
+.footer {
+    bottom: 0;
+    position: absolute;
+    background: #fff;
+    width: 100%;
+}
+.text-footer {
+    font-size: 14px;
+    text-align: right;
+    padding: 10px 10px 0;
+}
