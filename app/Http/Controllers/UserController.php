@@ -190,4 +190,48 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['Lỗi hệ thống']);
         }
     }
+
+    public function edit()
+    {
+        return view('user.edit');
+    }
+
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'repassword' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors(['Thông tin nhập vào không hợp lệ']);
+        }
+
+        if ($request->get('password') !== $request->get('repassword')) {
+            return redirect()->back()->withErrors(['Mật khẩu nhập lại không trùng khớp']);
+        }
+
+        $data = User::find(Auth::user()->id);
+        $data['name'] = $request->get('name');
+        $data['email'] = $request->get('email');
+        $data['type_user'] = 0;
+        $data['password'] = Hash::make($request->get('password'));
+        $data->save();
+
+        return redirect(route('user.account'))->with('success', 'Cập nhật người dùng thành công');
+
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        if (Auth::user()->type_user == 2) {
+            $user->delete();
+            return redirect()->back()->with('success', 'Xóa người dùng thành công');
+        } else {
+            return redirect()->back()->withErrors(['Bạn không có quyền xóa người dùng']);
+        }
+    }
 }

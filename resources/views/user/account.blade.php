@@ -19,6 +19,7 @@
             <div>
                 <p>Tên: {{auth()->user()->name}}</p>
                 <p>Email: {{auth()->user()->email}}</p>
+                <p><a href="{{route('user.edit')}}"><i class="fas fa-pen"></i> Chỉnh sửa thông tin cá nhân</a></p>
                 @if(auth()->user()->type_user == 0)
                     <a class="btn btn-primary" style="background: #0087f7" href="{{route('user.buyVIP')}}">ĐĂNG KÝ VIP</a>
                 @elseif(auth()->user()->type_user == 1)
