@@ -149,6 +149,7 @@ h1 {
     flex-direction: row;
     justify-content: space-between;
     padding-top: 10px;
+    font-size: 18px;
 }
 
 .menu-left a, .menu-right a {
@@ -266,9 +267,10 @@ input {
 }
 .footer {
     bottom: 0;
-    position: absolute;
+    position: fixed;
     background: #fff;
     width: 100%;
+    z-index: 100000;
 }
 .text-footer {
     font-size: 14px;
