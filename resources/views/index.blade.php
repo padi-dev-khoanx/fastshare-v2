@@ -64,12 +64,27 @@
                     window.onbeforeunload = function () {
                         return "";
                     };
-                    $(".copy-path").hide()
+                    $(".copy-path").each(function () {
+                        if($(this).data('path') === "none") {
+                            $(this).hide()
+                        } else {
+                            $(this).show()
+                        }
+                    })
+                    $(".dz-link").each(function () {
+                        console.log($(this).html())
+                        if($(this).html() === "<span></span>" || $(this).html() === "<span>undefined</span>") {
+                            $(this).hide()
+                        } else {
+                            $(this).show()
+                        }
+                    })
                 });
                 this.on("successmultiple", function (files, response) {
                     window.onbeforeunload = function () {
                     }
                     $(".copy-path").show()
+                    $(".dz-link").show()
                     listId.push(response.id);
                     listPath.push(response.path_download);
 
@@ -78,10 +93,12 @@
                     })
 
                     $(".dz-link").each(function (index, value) {
+                        $(this).show()
                         $(this).html("<span>" + listPath[index] + "</span>");
                     })
 
                     $(".copy-path").each(function (index, value) {
+                        $(this).show()
                         $(this).data("path", listPath[index]);
                     })
 
