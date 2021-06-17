@@ -8,6 +8,11 @@
             <p>{!! \Session::get('success') !!}</p>
         </div>
     @endif
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <p>{{$errors->first()}}</p>
+        </div>
+    @endif
     <div class="account">
         <div class="info">
             <h4>Thông tin user</h4>
@@ -58,6 +63,7 @@
                     <th scope="col">Tiêu đề</th>
                     <th scope="col">Đường dẫn</th>
                     <th scope="col">Thời gian tải lên</th>
+                    <th scope="col">Hành động</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,6 +72,7 @@
                         <td><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{$text->title}}</p></td>
                         <td><a href="{{request()->root() . '/text/' . $text->text_path}}"><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/text/' . $text->text_path}}</p></a></td>
                         <td style="width: fit-content">{{$text->created_at}}</td>
+                        <td style="width: fit-content"><a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" href="{{route('text.delete',$text->id)}}">Xóa</a></td>
                     </tr>
                 @endforeach
                 </tbody>

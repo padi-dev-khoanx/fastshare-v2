@@ -76,4 +76,15 @@ class TextController extends Controller
         $text = Text::find($idFile);
         return view('text/show', compact('text'));
     }
+
+    public function delete($id)
+    {
+        $text = Text::find($id);
+        if ($text->user_id == Auth::user()->id) {
+            $text->delete();
+            return redirect()->back()->with('success', 'Xóa văn bản chia sẻ thành công');
+        } else {
+            return redirect()->back()->withErrors(['Bạn không có quyền xóa văn bản của người khác']);
+        }
+    }
 }

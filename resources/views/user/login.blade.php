@@ -8,9 +8,9 @@
                 <form class="form" id="loginForm" action=" {{ route('user.auth') }}" method="POST">
                     @csrf
                     <label for="email">Email</label>
-                    <input id="email" type="text" name="email"/>
+                    <input id="email" type="text" name="email" required/>
                     <label for="password">Mật khẩu</label>
-                    <input id="password" type="password" name="password"/>
+                    <input id="password" type="password" name="password" required/>
                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
                 </form>
                 <a href="{{ route('user.register') }}">Bạn chưa có tài khoản?</a>
