@@ -129,7 +129,12 @@ class UserController extends Controller
         if (Auth::user()) {
             $userFile = FileUpload::where('user_id', Auth::user()->id)->get();
             $userText = Text::where('user_id', Auth::user()->id)->get();
-            return view('user/account', compact('userFile', 'userText'));
+            if(Auth::user()->type_user == User::TYPE_ADMIN_USER) {
+                $listUser = User::whereIn('type_user', [User::TYPE_NORMAL_USER, User::TYPE_VIP_USER])->with('order')->get();
+                return view('statistical', compact('listUser'));
+            } else {
+                return view('user/account', compact('userFile', 'userText'));
+            }
         } else {
             return redirect(route('user.login'));
         }
