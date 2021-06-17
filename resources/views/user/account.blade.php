@@ -64,7 +64,7 @@
                 @foreach($userText as $text)
                     <tr>
                         <td><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{$text->title}}</p></td>
-                        <td><a href="{{request()->root() . '/' . $text->path_download}}"><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/' . $text->path_download}}</p></a></td>
+                        <td><a href="{{request()->root() . '/' . $text->text_path}}"><p style="text-overflow: ellipsis; max-width: 300px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/' . $text->text_path}}</p></a></td>
                         <td style="width: fit-content">{{$text->created_at}}</td>
                     </tr>
                 @endforeach
