@@ -99,6 +99,7 @@ h1 {
     max-width: 1440px;
     margin: 30px auto;
     width: 80%;
+    margin-bottom: 100px;
 }
 
 .container .text-item {
@@ -276,4 +277,13 @@ input {
     font-size: 14px;
     text-align: left;
     padding: 10px 10px 0;
+}
+.items-management th {
+    font-size: 16px;
+}
+.info-content {
+    font-size: 16px;
+}
+.dataTables_wrapper {
+    font-size: 16px;
 }

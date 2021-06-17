@@ -200,24 +200,16 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required',
-            'repassword' => 'required',
+            'email' => 'required|unique:users,email,'.Auth::user()->id,
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors(['Thông tin nhập vào không hợp lệ']);
         }
 
-        if ($request->get('password') !== $request->get('repassword')) {
-            return redirect()->back()->withErrors(['Mật khẩu nhập lại không trùng khớp']);
-        }
-
         $data = User::find(Auth::user()->id);
         $data['name'] = $request->get('name');
         $data['email'] = $request->get('email');
-        $data['type_user'] = 0;
-        $data['password'] = Hash::make($request->get('password'));
         $data->save();
 
         return redirect(route('user.account'))->with('success', 'Cập nhật người dùng thành công');

@@ -16,10 +16,6 @@
                     <input id="name" type="text" name="name" value="{{auth()->user()->name}}" required/>
                     <label for="email">Email</label>
                     <input id="email" type="text" name="email" required value="{{auth()->user()->email}}"/>
-                    <label for="password">Mật khẩu</label>
-                    <input id="password" type="password" name="password" required/>
-                    <label for="repassword">Nhập lại mật khẩu</label>
-                    <input id="repassword" type="password" name="repassword" required/>
                     <button type="submit" class="btn btn-primary">Lưu</button>
                 </form>
             </div>
