@@ -31,8 +31,12 @@ class HomeController extends Controller
             $data['type'] = $fileObject->getClientOriginalExtension();
             $data['size'] = $fileObject->getSize();
             $data['path'] = $fileObject->move('upload', $data['name'].$now);
+            $data['day_exist'] = 1;
             if (Auth::user()) {
                 $data['user_id'] = Auth::user()->id;
+                if (Auth::user()->type_user == 1) {
+                    $data['day_exist'] = 7;
+                }
             }
             $data['path_download'] = '';
             $dataCreated = FileUpload::create($data);

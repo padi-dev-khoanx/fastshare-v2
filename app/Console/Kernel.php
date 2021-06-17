@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\AutoDeleteFile::class,
+        \App\Console\Commands\AutoCancelVip::class
     ];
 
     /**
@@ -24,7 +25,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('file:auto_delete')
+            ->cron('0 * * * *')
+            ->appendOutputTo (storage_path().'/logs/laravel_output.log');
+        $schedule->command('vip:auto_cancel')
+            ->cron('0 0 * * *')
+            ->appendOutputTo (storage_path().'/logs/laravel_output.log');
     }
 
     /**
