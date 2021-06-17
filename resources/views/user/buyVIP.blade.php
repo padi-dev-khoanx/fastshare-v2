@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Số thẻ</label>
-                        <input type="text" class="form-control" placeholder="4242424242424242" name="card_number" required>
+                        <input type="text" class="form-control" placeholder="Số thẻ" name="card_number" required>
                     </div>
                     <div class="form-group">
                         <label>Tháng kết thúc</label>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label>Năm kết thúc</label>
-                        <input type="number" class="form-control" placeholder="2021"  name="year_exp" required>
+                        <input type="number" class="form-control" placeholder="Năm kết thúc"  name="year_exp" required>
                     </div>
                     <button type="submit" class="btn btn-primary" style="background: #0087f7">Thanh toán</button>
                 </form>
