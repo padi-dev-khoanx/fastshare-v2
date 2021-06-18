@@ -23,13 +23,13 @@
     <script type="text/javascript">
         var listId = [];
         var listPath = [];
-        var listIndexError = [];
+        var listIndexError = []; //lưu vị trí file lỗi
         var maxFileSize = 100;
         @if($typeUser == 1)
             maxFileSize = 200;
         @endif
 
-        Dropzone.options.myDropzone = {
+        Dropzone.options.myDropzone = { //lựa chọn options của dropzone
             url: '{{ url('upload_file') }}',
             headers: {
                 'X-CSRF-TOKEN': '{!! csrf_token() !!}'
@@ -61,11 +61,11 @@
             previewsContainer: null,
             hiddenInputContainer: "body",
             init: function () {
-                this.on("sendingmultiple", function (files, response) {
-                    window.onbeforeunload = function () {
+                this.on("sendingmultiple", function (files, response) { //trạng thái sending
+                    window.onbeforeunload = function () { //ngăn reload
                         return "";
                     };
-                    $(".copy-path").each(function () {
+                    $(".copy-path").each(function () { //ẩn nút copy nếu data rỗng
                         if($(this).data('path') === "none") {
                             $(this).hide()
                         } else {
@@ -92,15 +92,13 @@
                         }
                     })
                 });
-                this.on("successmultiple", function (files, response) {
+                this.on("successmultiple", function (files, response) { //trạng thái success
                     window.onbeforeunload = function () {
                     }
-                    $(".copy-path").show()
-                    $(".dz-link").show()
                     listId.push(response.id);
                     listPath.push(response.path_download);
 
-                    $(".text-remove").each(function (index, value) {
+                    $(".text-remove").each(function (index, value) { //nút xóa
                         $(this).attr('id', listId[index]);
                     })
 
@@ -134,7 +132,7 @@
                     //Check nếu file tải lên thất bại thì sẽ bỏ đi nút copy
                     $(".dz-error-message span").each(function (index, value) {
                         if ($(this).html() != "") {
-                            listIndexError.push(index)
+                            listIndexError.push(index)//lưu id của thẻ html vào để xóa các tính năng dưới
                         }
                     })
 
@@ -176,6 +174,7 @@
         }
 
         function timesDownLoadFunction() {
+            //check xem người dùng chọn selected list nào trong timesDownload
             $.ajax({
                 type: 'POST',
                 url: '{{ url('update_times_download') }}',
@@ -184,11 +183,11 @@
                 },
                 data: {
                     "id": idFile,
-                    "times_download": $("#times_download_" + idFile).find(":selected").val(),
+                        "times_download": $("#times_download_" + idFile).find(":selected").val(), //chọn value trong times
                 },
                 dataType: 'html'
             }).done(function() {
-                $("#times_download_" + idFile).prop('disabled', true);
+                $("#times_download_" + idFile).prop('disabled', true); // ngăn việc chọn lại
             });
         }
 

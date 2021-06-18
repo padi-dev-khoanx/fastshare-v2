@@ -81,29 +81,27 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validatorArray = [
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required',
+            'password' => 'required|min:6',
             'repassword' => 'required',
-        ]);
-
+        ];
+        $messageerror = [
+            'name.required' => 'Thiếu họ tên',
+            'email.required' => 'Thiếu email',
+            'email.unique' => 'Email đã tồn tại',
+            'password.min' => 'Mật khẩu ít nhất 6 ký tự',
+            'password.required' => 'Thiếu password',
+            'repassword.required' => 'Thiếu nhập lại password',
+        ];
+        $validator = Validator::make($request->all(), $validatorArray, $messageerror);
         if ($validator->fails()) {
-            return response()->json(
-                [
-                    'status' => 'failed',
-                    'msg'=> $validator->errors()
-                ]
-            );
+            return redirect()->back()->withErrors($validator->errors());
         }
 
         if ($request->get('password') !== $request->get('repassword')) {
-            return response()->json(
-                [
-                    'status' => 'failed',
-                    'msg'=> "Nhập lại mật khẩu chưa đúng."
-                ]
-            );
+            return redirect()->back()->withErrors(['Mật khẩu nhập lại không khớp']);
         }
 
         $data = [];
