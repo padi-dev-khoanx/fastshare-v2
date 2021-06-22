@@ -40,9 +40,9 @@ class AutoCancelVip extends Command
     public function handle()
     {
         Log::info('Start cancel vip job');
-        $users = User::where('type_user', 1)->whereDate('vip_end_date', date('Y-m-d'))->get();
+        $users = User::where('type_user', User::TYPE_VIP_USER)->whereDate('vip_end_date', date('Y-m-d'))->get();
         foreach($users as $user) {
-            User::where('id', $user->id)->update(['type_user' => 0]);
+            User::where('id', $user->id)->update(['type_user' => User::TYPE_NORMAL_USER]);
         }
         Log::info('End cancel vip job');
         return 0;

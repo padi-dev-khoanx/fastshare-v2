@@ -112,11 +112,7 @@ class UserController extends Controller
 
         User::create($data);
 
-        return response()->json(
-            [
-                'status' => 'success'
-            ]
-        );
+        return redirect()->route('home.index');
     }
 
     /**
@@ -217,7 +213,7 @@ class UserController extends Controller
     public function delete($id)
     {
         $user = User::find($id);
-        if (Auth::user()->type_user == 2) {
+        if (Auth::user()->type_user = User::TYPE_ADMIN_USER) {
             $user->delete();
             return redirect()->back()->with('success', 'Xóa người dùng thành công');
         } else {

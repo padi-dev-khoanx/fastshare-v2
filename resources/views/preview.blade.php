@@ -2,7 +2,7 @@
 @section('content')
     @php
         $path = urlencode($file->path);
-        $path = urldecode(str_replace('%5C','%2F', $path));
+        $path = urldecode(str_replace('%5C','%2F', $path)); //thay \ thanh /
     @endphp
         <div class="container">
             <div class="frame">

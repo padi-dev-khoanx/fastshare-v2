@@ -38,7 +38,7 @@ Route::post('/auth', 'UserController@auth')->name('user.auth');
 Route::post('/create', 'UserController@create')->name('user.create');
 
 Route::post('/upload_file', 'HomeController@upload')->name('home.upload');
-Route::get('/{path}', 'HomeController@download');
 Route::get('/preview/{path}', 'HomeController@preview')->name('previewFile');
 Route::post('/download', 'HomeController@downloadFile');
 Route::post('/delete_file', 'HomeController@delete')->name('home.delete');
+Route::get('/{path}', 'HomeController@download');

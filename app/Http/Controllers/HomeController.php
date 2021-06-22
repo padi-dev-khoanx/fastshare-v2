@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\FileUpload;
 use Carbon\Carbon;
@@ -35,33 +36,39 @@ class HomeController extends Controller
             $data['day_exist'] = 1;
             if (Auth::user()) {
                 $data['user_id'] = Auth::user()->id;
-                if (Auth::user()->type_user == 1) {
+                if (Auth::user()->type_user == User::TYPE_VIP_USER) {
                     $data['day_exist'] = 7;
                 }
             }
             $data['path_download'] = '';
             $dataCreated = FileUpload::create($data);
 
-            $path_download = trim(base64_encode(str_pad($dataCreated->id, 6, '.')), '=');
+            $path_download = trim(base64_encode(str_pad($dataCreated->id, 6, '.')), '='); //mã hóa id trong bảng file thành base64
 
             $data['path_download'] = $path_download;
             $query = FileUpload::find($dataCreated->id);
             $query['path_download'] = $path_download;
             $query->save();
-            return response()->json(['path_download'=> $request->root() . '/' . $path_download, 'id' => $dataCreated->id]);
+
+            return response()->json(
+                [
+                    'path_download'=> $request->root() . '/' . $path_download,
+                    'id' => $dataCreated->id
+                ]
+            );
         }
     }
+
     public function download($path)
     {
-        $idFile = trim(base64_decode($path), '.');
-        $file = FileUpload::find($idFile);
+        $file = FileUpload::where('path_download',$path)->first();
         $isExists = File::exists($file->path);
         return view('download', compact('file', 'isExists'));
     }
+
     public function preview($path)
     {
-        $idFile = trim(base64_decode($path), '.');
-        $file = FileUpload::find($idFile);
+        $file = FileUpload::where('path_download',$path)->first();
         if( in_array($file->type, ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'JPEG']) ) {
             return view('preview', compact('file'));
         } elseif ( in_array($file->type, ['pdf', 'PDF']) ) {
@@ -78,6 +85,7 @@ class HomeController extends Controller
             return view('preview', compact('file'));
         }
     }
+
     public function downloadFile(Request $request)
     {
         $pathToFile = 'upload/' . substr($request->filePath,7);
@@ -91,6 +99,7 @@ class HomeController extends Controller
             return response()->download($pathToFile, $name);
         }
     }
+
     public function delete(Request $request)
     {
         $file = FileUpload::find($request['id']);
