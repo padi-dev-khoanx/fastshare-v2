@@ -8,20 +8,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendWelcomeEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
+    protected $send_mail;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($send_mail)
     {
-        //
+        $this->send_mail = $send_mail;
     }
 
     /**
@@ -31,6 +32,7 @@ class SendWelcomeEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to(auth()->user()->email)->send(new WelcomeMail());
+        $email = new WelcomeMail();
+        Mail::to($this->send_mail)->send($email);
     }
 }

@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="633a74ac-eb3e-409a-a421-347fa0ea6f02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendWelcomeEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_22_161844_create_jobs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendWelcomeEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendWelcomeEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/dynamic_email_template.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +183,8 @@
       <workItem from="1623927497869" duration="11926000" />
       <workItem from="1624002719674" duration="3808000" />
       <workItem from="1624115362079" duration="6483000" />
-      <workItem from="1624281701433" duration="16186000" />
+      <workItem from="1624281701433" duration="24011000" />
+      <workItem from="1624628315723" duration="4074000" />
     </task>
     <servers />
   </component>
@@ -199,6 +201,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

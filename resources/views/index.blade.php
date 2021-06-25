@@ -47,7 +47,7 @@
             dictMaxFilesExceeded: "Bạn chỉ có thể tải lên 6 file.",
             dictFileTooBig: 'File tải lên phải nhỏ hơn ' + maxFileSize + 'MB',
             addRemoveLinks: true,
-            timeout: 1800,
+            timeout: 300000000,
             removedfile: function (file) {
                 var name = file.name;
                 var _ref;

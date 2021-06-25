@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\FileUpload;
 use App\Models\Orders;
 use App\Models\Text;
 use App\Models\User;
 use App\Jobs\SendWelcomeEmail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -166,7 +168,8 @@ class UserController extends Controller
                 $order['create_date'] = now();
                 $order['end_date'] = date('Y-m-d', strtotime('+1 months'));
                 Orders::create($order);
-                dispatch(new SendWelcomeEmail());
+                Mail::to($user->email)->send(new WelcomeMail());
+//                dispatch(new SendWelcomeEmail($user->email));
                 return redirect(route('user.account'))->with('success', 'Mua gói VIP thành công');
             } else {
                 return redirect()->back()->withErrors(['Lỗi hệ thống']);
