@@ -128,11 +128,13 @@
                     window.onbeforeunload = function () {
                     }
                 });
+                //Check nếu file tải lên thất bại thì sẽ bỏ đi copy và các nút khác
                 this.on("error", function (){
-                    //Check nếu file tải lên thất bại thì sẽ bỏ đi nút copy
+                    window.onbeforeunload = function () {
+                    }
                     $(".dz-error-message span").each(function (index, value) {
                         if ($(this).html() != "") {
-                            listIndexError.push(index)//lưu id của thẻ html vào để xóa các tính năng dưới
+                            listIndexError.push(index)//lưu idex của thẻ html vào để xóa các tính năng dưới
                         }
                     })
 

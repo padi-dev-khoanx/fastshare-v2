@@ -43,7 +43,7 @@ class HomeController extends Controller
             $data['path_download'] = '';
             $dataCreated = FileUpload::create($data);
 
-            $path_download = trim(base64_encode(str_pad($dataCreated->id, 6, '.')), '='); //mã hóa id trong bảng file thành base64
+            $path_download = trim(base64_encode(str_pad($dataCreated->id, 6, '.')), '=');
 
             $data['path_download'] = $path_download;
             $query = FileUpload::find($dataCreated->id);
