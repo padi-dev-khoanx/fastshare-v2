@@ -24,6 +24,7 @@
         var listId = [];
         var listPath = [];
         var listIndexError = []; //lưu vị trí file lỗi
+        var listIndexAddFile = [];
         var maxFileSize = 100;
         @if($typeUser == 1)
             maxFileSize = 200;
@@ -153,6 +154,31 @@
                     $(".times-download").each(function (index, value) {
                         if (listIndexError.includes(index)) {
                             $(this).remove()
+                        }
+                    })
+                });
+                this.on("addedfile", function (){
+                    window.onbeforeunload = function () {
+                    }
+                    $(".dz-preview").each(function (index, value) {
+                        listIndexAddFile.push(index)
+                    })
+
+                    $(".dz-link").each(function (index, value) {
+                        if (listIndexAddFile.includes(index)) {
+                            $(this).hide()
+                        }
+                    })
+
+                    $(".copy-path").each(function (index, value) {
+                        if (listIndexAddFile.includes(index)) {
+                            $(this).hide()
+                        }
+                    })
+
+                    $(".times-download").each(function (index, value) {
+                        if (listIndexAddFile.includes(index)) {
+                            $(this).hide()
                         }
                     })
                 })
