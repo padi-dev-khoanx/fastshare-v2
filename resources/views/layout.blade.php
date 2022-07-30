@@ -52,9 +52,6 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    <p class="text-footer">Nguyen Trong Nghia - 0911551998</p>
-</div>
 @yield('menu')
 @yield('content')
 </body>
