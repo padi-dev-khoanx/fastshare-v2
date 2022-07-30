@@ -44,7 +44,7 @@
                 @foreach($userFile as $file)
                     <tr>
                         <td><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{$file->name}}</p></td>
-                        <td><a href="{{env("APP_NAME") . '/' . $file->path_download}}"><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/' . $file->path_download}}</p></a></td>
+                        <td><a href="{{env("APP_NAME") . '/' . $file->path_download}}"><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{env("APP_NAME") . '/' . $file->path_download}}</p></a></td>
                         <td style="width: fit-content">{{$file->created_at}}</td>
                         <td style="width: fit-content">{{$file->times_download}}</td>
                     </tr>
@@ -71,7 +71,7 @@
                 @foreach($userText as $text)
                     <tr>
                         <td><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{$text->title}}</p></td>
-                        <td><a href="{{request()->root() . '/text/' . $text->text_path}}"><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/text/' . $text->text_path}}</p></a></td>
+                        <td><a href="{{env("APP_NAME") . '/text/' . $text->text_path}}"><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{env("APP_NAME") . '/text/' . $text->text_path}}</p></a></td>
                         <td style="width: fit-content">{{$text->created_at}}</td>
                         <td style="width: fit-content"><a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" href="{{route('text.delete',$text->id)}}">Xóa</a></td>
                     </tr>
