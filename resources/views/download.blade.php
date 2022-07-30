@@ -30,7 +30,6 @@
                                             <span class="dz-upload" data-dz-uploadprogress="" style="width: 100%;"></span>
                                         </div>
                                         <div class="dz-success-mark">
-                                            <?xml version="1.0"?>
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="54px" height="54px"  x="0" y="0" viewBox="0 0 477.827 477.827" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g>
                                                 <g xmlns="http://www.w3.org/2000/svg">
                                                     <g>
