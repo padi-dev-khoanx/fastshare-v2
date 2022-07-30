@@ -52,7 +52,7 @@ class HomeController extends Controller
 
             return response()->json(
                 [
-                    'path_download'=> $request->root() . '/' . $path_download,
+                    'path_download'=> env("APP_URL") . '/' . $path_download,
                     'id' => $dataCreated->id
                 ]
             );
