@@ -44,7 +44,7 @@
                 @foreach($userFile as $file)
                     <tr>
                         <td><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{$file->name}}</p></td>
-                        <td><a href="{{request()->root() . '/' . $file->path_download}}"><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/' . $file->path_download}}</p></a></td>
+                        <td><a href="{{env("APP_NAME") . '/' . $file->path_download}}"><p style="text-overflow: ellipsis; max-width: 200px; white-space: nowrap; overflow: hidden;">{{request()->root() . '/' . $file->path_download}}</p></a></td>
                         <td style="width: fit-content">{{$file->created_at}}</td>
                         <td style="width: fit-content">{{$file->times_download}}</td>
                     </tr>
