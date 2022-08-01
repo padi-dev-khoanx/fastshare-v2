@@ -62,6 +62,9 @@ class HomeController extends Controller
     public function download($path)
     {
         $file = FileUpload::where('path_download',$path)->first();
+        if (!$file) {
+            return abort(404);
+        }
         $isExists = File::exists($file->path);
         return view('download', compact('file', 'isExists'));
     }
